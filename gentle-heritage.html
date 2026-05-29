@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gentle Heritage。</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Raleway:wght@200;300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg, #F4F2EC);
+      background-image:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.045 0'/></filter><rect width='140' height='140' filter='url(%23f)'/></svg>"),
+        repeating-linear-gradient(0deg, rgba(120,105,75,0.045) 0px, rgba(120,105,75,0.045) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(90deg, rgba(120,105,75,0.04) 0px, rgba(120,105,75,0.04) 1px, transparent 1px, transparent 3px);
+      color: var(--text, #1C1410);
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.4s, color 0.4s;
+    }
+    :root {
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Jost', sans-serif;
+      --bg: #F4F2EC;
+      --surface: #ECE8DE;
+      --text: #1C1410;
+      --text-muted: #9A8870;
+      --accent: #3D2B1F;
+      --accent-light: #C9B89A;
+      --border-color: #E8DBB6;
+      --radius: 0px;
+      --hero-size: clamp(3rem, 8vw, 7rem);
+      --hero-weight: 300;
+      --nav-weight: 400;
+      --letter-spacing-display: 0.02em;
+      --letter-spacing-nav: 0.08em;
+    }
+    button { cursor: pointer; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border-color); }
+    @media (max-width: 640px) {
+      .hero-split { grid-template-columns: 1fr !important; }
+      .hero-split > div:last-child { min-height: 50vw !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Organic torn-paper edge filters (fractal-noise displacement) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <filter id="torn0" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="4" seed="3" result="n" />
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      <filter id="torn1" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.017 0.018" numOctaves="4" seed="14" result="n" />
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="18" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      <filter id="torn2" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.015 0.023" numOctaves="5" seed="27" result="n" />
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      <filter id="torn3" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018 0.016" numOctaves="4" seed="41" result="n" />
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="17" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="gh-shop.jsx"></script>
+
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "variation": "Warm"
+    }/*EDITMODE-END*/;
+
+    const VARIATION_VARS = {
+      Editorial: {
+        '--font-display': "'Bodoni Moda', serif",
+        '--font-body': "'Raleway', sans-serif",
+        '--bg': '#FDFBF8',
+        '--surface': '#F4F1EC',
+        '--text': '#0A0A08',
+        '--text-muted': '#9A9088',
+        '--accent': '#0A0A08',
+        '--accent-light': '#C8B898',
+        '--border-color': '#E4DED6',
+      },
+      Warm: {
+        '--font-display': "'DM Serif Display', serif",
+        '--font-body': "'DM Sans', sans-serif",
+        '--bg': '#F4F2EC',
+        '--surface': '#ECE8DE',
+        '--text': '#1C1410',
+        '--text-muted': '#9A8870',
+        '--accent': '#3D2B1F',
+        '--accent-light': '#C4956A',
+        '--border-color': '#E8DBB6',
+      },
+      Graphic: {
+        '--font-display': "'Raleway', sans-serif",
+        '--font-body': "'Raleway', sans-serif",
+        '--bg': '#F5F4F2',
+        '--surface': '#ECEAE6',
+        '--text': '#111110',
+        '--text-muted': '#888580',
+        '--accent': '#111110',
+        '--accent-light': '#CCCAC4',
+        '--border-color': '#DDDBD7',
+      },
+    };
+
+    function App() {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      const [view, setView] = React.useState('home');
+      const [cart, setCart] = React.useState([]);
+      const [wishlist, setWishlist] = React.useState([]);
+      const [cartOpen, setCartOpen] = React.useState(false);
+      const [product, setProduct] = React.useState(null);
+
+      // Apply CSS variables for current variation
+      React.useEffect(() => {
+        const vars = VARIATION_VARS[t.variation] || VARIATION_VARS.Editorial;
+        Object.entries(vars).forEach(([k, v]) => document.documentElement.style.setProperty(k, v));
+      }, [t.variation]);
+
+      function toggleWishlist(id) {
+        setWishlist(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+      }
+
+      function openProduct(p) {
+        setProduct(p);
+        setCartOpen(false);
+      }
+
+      const setViewAndScroll = (v) => {
+        setView(v);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      };
+
+      const navProps = { view, setView: setViewAndScroll, cart, wishlist, setCartOpen };
+
+      return (
+        <React.Fragment>
+          <Nav {...navProps} />
+
+          {view === 'home' && (
+            <React.Fragment>
+              <Hero setView={setViewAndScroll} variation={t.variation} />
+              <HowItWorks />
+              <Footer setView={setViewAndScroll} />
+            </React.Fragment>
+          )}
+
+          {view === 'shop' && (
+            <React.Fragment>
+              <ShopGrid wishlist={wishlist} onWishlist={toggleWishlist} onSelect={openProduct} />
+              <Footer setView={setViewAndScroll} />
+            </React.Fragment>
+          )}
+
+          {view === 'wishlist' && (
+            <React.Fragment>
+              <WishlistView wishlist={wishlist} onWishlist={toggleWishlist} onSelect={openProduct} />
+              <Footer setView={setViewAndScroll} />
+            </React.Fragment>
+          )}
+
+          {view === 'howItWorks' && (
+            <React.Fragment>
+              <HowItWorks />
+              <Footer setView={setViewAndScroll} />
+            </React.Fragment>
+          )}
+
+          {view === 'contact' && (
+            <div style={{ paddingTop: '64px', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4rem 2rem', flexDirection: 'column', textAlign: 'center', gap: '1.5rem' }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Get in touch</p>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem,6vw,4rem)', fontWeight: 'var(--hero-weight)', color: 'var(--text)', lineHeight: 1.1 }}>Say hello</h2>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.95rem', color: 'var(--text-muted)', maxWidth: '360px', lineHeight: 1.75 }}>
+                  Questions about sizing, a piece you'd like to see, or just want to chat? Find us on Instagram — DMs always open.
+                </p>
+                <a href="#" style={{ background: 'var(--accent)', color: 'var(--bg)', textDecoration: 'none', padding: '0.875rem 2.5rem', fontFamily: 'var(--font-body)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'inline-block' }}>
+                  @gentleheritage ↗
+                </a>
+              </div>
+              <Footer setView={setViewAndScroll} />
+            </div>
+          )}
+
+          {product && (
+            <ProductModal
+              product={product}
+              setCart={setCart}
+              wishlisted={wishlist.includes(product.id)}
+              onWishlist={toggleWishlist}
+              onClose={() => setProduct(null)}
+            />
+          )}
+
+          {cartOpen && <CartDrawer cart={cart} setCart={setCart} onClose={() => setCartOpen(false)} />}
+
+          <TweaksPanel>
+            <TweakSection label="Design direction" />
+            <TweakRadio
+              label="Style"
+              value={t.variation}
+              options={['Editorial', 'Warm', 'Graphic']}
+              onChange={v => setTweak('variation', v)}
+            />
+            <TweakSection label="About each" />
+            <div style={{ padding: '0 1rem 0.5rem', fontFamily: 'sans-serif', fontSize: '11px', color: '#888', lineHeight: 1.6 }}>
+              <p style={{ marginBottom: '0.5rem' }}><strong>Editorial</strong> — Bodoni Moda, cream &amp; black, dramatic split hero. High fashion.</p>
+              <p style={{ marginBottom: '0.5rem' }}><strong>Warm</strong> — DM Serif Display, warm ivory, intimate &amp; soft. Like Kinfolk.</p>
+              <p><strong>Graphic</strong> — Raleway heavy, cool grey, stark &amp; modern. Bold type-led.</p>
+            </div>
+          </TweaksPanel>
+        </React.Fragment>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
