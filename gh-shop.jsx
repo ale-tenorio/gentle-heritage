@@ -1,18 +1,18 @@
 // gh-shop.jsx — Gentle Heritage v2: editorial / magazine aesthetic
 
 const PRODUCTS = [
-  { id:1,  name:'Linen Shirt Dress',     price:89,  cat:'Dresses',            cond:'new',        sizes:['XS','S','M'],        note:"Hits at knee on 5'2\" — ideal midi length",          g:['#E8D8C2','#C4A87A'] },
-  { id:2,  name:'Vintage Denim Jacket',  price:45,  cat:'Outerwear',          cond:'secondhand', sizes:['S','M'],             note:'Cropped fit, great for petite frames',               g:['#D6CCBE','#A89074'] },
-  { id:3,  name:'Ribbed Tank Set',       price:68,  cat:'Sets / co-ords',     cond:'new',        sizes:['XS','S','M','L'],   note:'High-waist trousers elongate the leg',               g:['#DED0C0','#B8A48C'] },
-  { id:4,  name:'Wide Leg Trousers',     price:72,  cat:'Jeans & trousers',   cond:'new',        sizes:['XS','S','M'],       note:'Petite inseam available',                            g:['#CEC4B0','#A89880'] },
-  { id:5,  name:'Wrap Mini Skirt',       price:38,  cat:'Skirts',             cond:'secondhand', sizes:['XS','S'],           note:'Sits high — flattering on shorter legs',             g:['#D4C4B8','#B09488'] },
-  { id:6,  name:'Cashmere Crewneck',     price:120, cat:'Tops',               cond:'new',        sizes:['XS','S','M'],       note:'Slightly cropped — perfect proportions',             g:['#E0DAD4','#C4BEB8'] },
-  { id:7,  name:'Satin Slip Dress',      price:95,  cat:'Dresses',            cond:'new',        sizes:['XS','S'],           note:"Short length works well at 5'4\" and under",         g:['#D4C4C0','#B4A0A0'] },
-  { id:8,  name:"Vintage Levi's 501s",   price:55,  cat:'Jeans & trousers',   cond:'secondhand', sizes:["W24","W25","W26"],  note:'Shortened hem — ready to wear',                      g:['#D2C8BA','#A48C72'] },
-  { id:9,  name:'Boxy Blazer',           price:85,  cat:'Outerwear',          cond:'secondhand', sizes:['XS','S','M'],       note:'Oversized on petite frames is very intentional here', g:['#C4C0BC','#A4A09C'] },
-  { id:10, name:'Broderie Blouse',       price:62,  cat:'Tops',               cond:'new',        sizes:['XS','S','M'],       note:'Cropped hem hits at natural waist',                   g:['#E4DDD4','#CCC0B0'] },
-  { id:11, name:'Mary Jane Flats',       price:48,  cat:'Shoes & accessories', cond:'new',       sizes:['35','36','37','38'],note:'Low heel adds height subtly',                        g:['#CCC4BC','#ACA49C'] },
-  { id:12, name:'Pleated Mini Skirt',    price:44,  cat:'Skirts',             cond:'new',        sizes:['XS','S','M'],       note:"Mini length perfect for 5'4\" and under",            g:['#DEDAD4','#C0BCB4'] },
+  { id:1,  name:'Linen Shirt Dress',     price:89,  cat:'Dresses',            cond:'new',        sizes:['XS','S','M'],        note:"Hits at knee on 5'2\" — ideal midi length",           img:'https://images.unsplash.com/photo-0HQzYawVQSY?w=600&q=80&fit=crop&crop=center', g:['#E8D8C2','#C4A87A'] },
+  { id:2,  name:'Vintage Denim Jacket',  price:45,  cat:'Outerwear',          cond:'secondhand', sizes:['S','M'],             note:'Cropped fit, great for petite frames',                img:'https://images.unsplash.com/photo-_3Q3tsJ01nc?w=600&q=80&fit=crop&crop=center', g:['#D6CCBE','#A89074'] },
+  { id:3,  name:'Ribbed Tank Set',       price:68,  cat:'Sets / co-ords',     cond:'new',        sizes:['XS','S','M','L'],    note:'High-waist trousers elongate the leg',                img:'https://images.unsplash.com/photo-nimElTcTNyY?w=600&q=80&fit=crop&crop=center', g:['#DED0C0','#B8A48C'] },
+  { id:4,  name:'Wide Leg Trousers',     price:72,  cat:'Jeans & trousers',   cond:'new',        sizes:['XS','S','M'],        note:'Petite inseam available',                             img:'https://images.unsplash.com/photo-TS--uNw-JqE?w=600&q=80&fit=crop&crop=center', g:['#CEC4B0','#A89880'] },
+  { id:5,  name:'Wrap Mini Skirt',       price:38,  cat:'Skirts',             cond:'secondhand', sizes:['XS','S'],            note:'Sits high — flattering on shorter legs',              img:'https://images.unsplash.com/photo-tCInGzGjLFo?w=600&q=80&fit=crop&crop=center', g:['#D4C4B8','#B09488'] },
+  { id:6,  name:'Cashmere Crewneck',     price:120, cat:'Tops',               cond:'new',        sizes:['XS','S','M'],        note:'Slightly cropped — perfect proportions',              img:'https://images.unsplash.com/photo-OVS3rqXq9gg?w=600&q=80&fit=crop&crop=center', g:['#E0DAD4','#C4BEB8'] },
+  { id:7,  name:'Satin Slip Dress',      price:95,  cat:'Dresses',            cond:'new',        sizes:['XS','S'],            note:"Short length works well at 5'4\" and under",          img:'https://images.unsplash.com/photo-UqT55tGBqzI?w=600&q=80&fit=crop&crop=center', g:['#D4C4C0','#B4A0A0'] },
+  { id:8,  name:"Vintage Levi's 501s",   price:55,  cat:'Jeans & trousers',   cond:'secondhand', sizes:["W24","W25","W26"],   note:'Shortened hem — ready to wear',                       img:'https://images.unsplash.com/photo-r5xHI_H44aM?w=600&q=80&fit=crop&crop=center', g:['#D2C8BA','#A48C72'] },
+  { id:9,  name:'Boxy Blazer',           price:85,  cat:'Outerwear',          cond:'secondhand', sizes:['XS','S','M'],        note:'Oversized on petite frames is very intentional here',  img:'https://images.unsplash.com/photo-ODxDFR5eSF8?w=600&q=80&fit=crop&crop=center', g:['#C4C0BC','#A4A09C'] },
+  { id:10, name:'Broderie Blouse',       price:62,  cat:'Tops',               cond:'new',        sizes:['XS','S','M'],        note:'Cropped hem hits at natural waist',                    img:'https://images.unsplash.com/photo-IXYxqP4zejo?w=600&q=80&fit=crop&crop=center', g:['#E4DDD4','#CCC0B0'] },
+  { id:11, name:'Mary Jane Flats',       price:48,  cat:'Shoes & accessories', cond:'new',       sizes:['35','36','37','38'], note:'Low heel adds height subtly',                         img:'https://images.unsplash.com/photo-pIKQbdSzF_k?w=600&q=80&fit=crop&crop=center', g:['#CCC4BC','#ACA49C'] },
+  { id:12, name:'Pleated Mini Skirt',    price:44,  cat:'Skirts',             cond:'new',        sizes:['XS','S','M'],        note:"Mini length perfect for 5'4\" and under",             img:'https://images.unsplash.com/photo-dlxLGIy-2VU?w=600&q=80&fit=crop&crop=center', g:['#DEDAD4','#C0BCB4'] },
 ];
 
 const CATEGORIES = ['All','Dresses','Tops','Outerwear','Jeans & trousers','Skirts','Sets / co-ords','Shoes & accessories'];
@@ -180,6 +180,7 @@ function ProductCard({ product, onSelect, wishlisted, onWishlist, large }) {
         onClick={() => onSelect(product)}
         style={{ aspectRatio: '3/4', background:`linear-gradient(165deg,${product.g[0]} 0%,${product.g[1]} 100%)`, marginBottom:'1.1rem', position:'relative', overflow:'hidden' }}
       >
+        <img src={product.img} alt={product.name} style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
         {product.cond === 'secondhand' && (
           <span style={{ position:'absolute', top:'0.875rem', left:'0.875rem', fontFamily:'var(--font-body)', fontSize:'0.56rem', letterSpacing:'0.14em', textTransform:'uppercase', color:'rgba(40,25,15,0.6)', background:'rgba(255,255,255,0.78)', padding:'0.2rem 0.5rem', whiteSpace:'nowrap' }}>Pre-loved</span>
         )}
@@ -282,7 +283,8 @@ function ProductModal({ product, setCart, wishlisted, onWishlist, onClose }) {
       <div onClick={e => e.stopPropagation()} style={{ position:'relative', background:'var(--bg)', width:'min(520px,100%)', height:'100vh', overflowY:'auto', display:'flex', flexDirection:'column' }}>
         <button onClick={onClose} style={{ position:'absolute', top:'1.25rem', right:'1.5rem', background:'none', border:'none', cursor:'pointer', fontFamily:'var(--font-body)', fontSize:'0.65rem', letterSpacing:'0.18em', textTransform:'uppercase', color:'var(--text-muted)', zIndex:1 }}>Close</button>
 
-        <div style={{ aspectRatio:'3/4', background:`linear-gradient(165deg,${product.g[0]},${product.g[1]})`, position:'relative', flexShrink:0 }}>
+        <div style={{ aspectRatio:'3/4', background:`linear-gradient(165deg,${product.g[0]},${product.g[1]})`, position:'relative', flexShrink:0, overflow:'hidden' }}>
+          <img src={product.img} alt={product.name} style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
           {product.cond === 'secondhand' && (
             <span style={{ position:'absolute', top:'1rem', left:'1rem', fontFamily:'var(--font-body)', fontSize:'0.6rem', letterSpacing:'0.14em', textTransform:'uppercase', color:'rgba(40,25,15,0.65)', background:'rgba(255,255,255,0.8)', padding:'0.2rem 0.6rem' }}>Pre-loved</span>
           )}
@@ -344,7 +346,7 @@ function CartDrawer({ cart, setCart, onClose }) {
             <p style={{ fontFamily:'var(--font-body)', fontSize:'0.8rem', color:'var(--text-muted)', marginTop:'2.5rem', letterSpacing:'0.04em' }}>Your bag is empty.</p>
           ) : cart.map(item => (
             <div key={`${item.id}-${item.size}`} style={{ display:'grid', gridTemplateColumns:'60px 1fr auto', gap:'1rem', padding:'1.5rem 0', borderBottom:'1px solid var(--border-color)', alignItems:'start' }}>
-              <div style={{ width:'60px', height:'78px', background:`linear-gradient(165deg,${item.g[0]},${item.g[1]})` }} />
+              <img src={item.img} alt={item.name} style={{ width:'60px', height:'78px', objectFit:'cover', display:'block', flexShrink:0 }} />
               <div>
                 <p style={{ fontFamily:'var(--font-display)', fontSize:'0.95rem', color:'var(--text)', margin:'0 0 0.3rem', lineHeight:1.3 }}>{item.name}</p>
                 <p style={{ fontFamily:'var(--font-body)', fontSize:'0.7rem', color:'var(--text-muted)', margin:'0 0 0.4rem', letterSpacing:'0.06em' }}>Size: {item.size} · Qty: {item.qty}</p>
@@ -445,8 +447,10 @@ function CutoutCard({ product, slot, onWishlist, onSelect }) {
           clipPath: clip,
           display: 'block',
           position: 'relative',
+          overflow: 'hidden',
         }}
       >
+        <img src={product.img} alt={product.name} style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
         {product.cond === 'secondhand' && (
           <span style={{ position:'absolute', bottom:'8%', left:'8%', fontFamily:'var(--font-body)', fontSize:'0.55rem', letterSpacing:'0.1em', textTransform:'uppercase', color:'rgba(40,25,15,0.65)', background:'rgba(255,255,255,0.75)', padding:'0.15rem 0.45rem' }}>Pre-loved</span>
         )}
